@@ -1,5 +1,12 @@
 {
   "home": {
     "title": "hello world"
+  },
+  "metadata": {
+    "title": "Next App Template",
+    "description": "Template for Next.js Applications"
+  },
+  "not_found": {
+    "title": "Not Found"
   }
 }

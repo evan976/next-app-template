@@ -1,5 +1,12 @@
 {
   "home": {
     "title": "你好，世界"
+  },
+  "metadata": {
+    "title": "Next App 模版",
+    "description": "Next.js 应用程序模版"
+  },
+  "not_found": {
+    "title": "未找到"
   }
 }
