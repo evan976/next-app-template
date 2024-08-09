@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations()
 
   return {
-    metadataBase: new URL(process.env.VERCEL_URL || 'http://localhost:3000'),
+    metadataBase: new URL('https://next-app-template-jet.vercel.app'),
     title: t('metadata.title'),
     description: t('metadata.description'),
   }
