@@ -22,5 +22,10 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "i18n-ally.localesPaths": ["messages"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.extract.keygenStyle": "snake_case",
+  "i18n-ally.displayLanguage": "en",
+  "i18n-ally.sourceLanguage": "en"
 }

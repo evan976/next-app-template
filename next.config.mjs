@@ -1,10 +1,10 @@
+import createNextIntlPlugin from 'next-intl/plugin'
+
+const withNextIntl = createNextIntlPlugin()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false, net: false, tls: false }
-    return config
-  },
 }
 
-export default nextConfig
+export default withNextIntl(nextConfig)
