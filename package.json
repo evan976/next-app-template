@@ -14,8 +14,6 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-query": "^5.51.23",
     "clsx": "^2.1.1",
-    "intl-locale-textinfo-polyfill": "^2.1.1",
-    "lucide-react": "^0.427.0",
     "next": "14.2.5",
     "next-intl": "^3.17.2",
     "react": "^18",
