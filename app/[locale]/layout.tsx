@@ -1,15 +1,16 @@
 import { Providers } from '@/app/providers'
-import { locales } from '@/config/locale'
-import Locale from 'intl-locale-textinfo-polyfill'
+import {
+  availableLocaleCodes,
+  availableLocalesMap,
+  defaultLocale,
+} from '@/config/locale'
+import { inter } from '@/lib/fonts'
 import type { Metadata } from 'next'
 import {
   getMessages,
   getTranslations,
   unstable_setRequestLocale,
 } from 'next-intl/server'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations()
@@ -22,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return availableLocaleCodes.map((locale) => ({ locale }))
 }
 
 export default async function AppLayout({
@@ -35,11 +36,12 @@ export default async function AppLayout({
   // Enable static rendering
   unstable_setRequestLocale(locale)
 
-  const { direction } = new Locale(locale).textInfo
-
   const messages = await getMessages()
+
+  const { hrefLang, langDir } = availableLocalesMap[locale] || defaultLocale
+
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
+    <html lang={hrefLang} dir={langDir} suppressHydrationWarning>
       <body className={inter.className}>
         <Providers messages={messages}>{children}</Providers>
       </body>

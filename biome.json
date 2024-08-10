@@ -35,7 +35,8 @@
         "noArrayIndexKey": "off",
         "noConfusingVoidType": "off",
         "noConsoleLog": "off",
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "noShadowRestrictedNames": "off"
       }
     }
   },

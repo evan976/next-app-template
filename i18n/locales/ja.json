@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "こんにちは世界"
+  },
+  "metadata": {
+    "title": "Next App レンダー",
+    "description": "Next.js アプリケーション レンダー"
+  },
+  "not_found": {
+    "title": "見つかりません"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "안녕 세계"
+  },
+  "metadata": {
+    "title": "Next App 편집",
+    "description": "Next.js 프로젝트 편집"
+  },
+  "not_found": {
+    "title": "찾을 수 없음"
+  }
+}

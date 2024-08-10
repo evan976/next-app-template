@@ -1,15 +1,17 @@
+import { availableLocaleCodes } from '@/config/locale'
 import { getRequestConfig } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { locales } from './config/locale'
 
 export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as any)) notFound()
+  // Validate that the incoming `locale` parameter is valid
+  if (!availableLocaleCodes.includes(locale)) notFound()
 
   return {
     messages: (
       await (locale === 'en'
-        ? import('./messages/en.json')
-        : import(`./messages/${locale}.json`))
+        ? // When using Turbopack, this will enable HMR for `en`
+          import('./i18n/locales/en.json')
+        : import(`./i18n/locales/${locale}.json`))
     ).default,
   }
 })

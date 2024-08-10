@@ -1,3 +1,4 @@
+import { LocaleSwitcher } from '@/components/locale-switcher'
 import { useTranslations } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 
@@ -10,8 +11,9 @@ export default function Page({
 
   const t = useTranslations('home')
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-5 p-24">
       {t('title')}
+      <LocaleSwitcher />
     </main>
   )
 }
