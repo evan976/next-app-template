@@ -40,7 +40,7 @@ export default async function AppLayout({
       <body
         className={cn(
           inter.className,
-          'bg-neutral-50 dark:bg-neutral-800 text-gray-950 dark:text-gray-100',
+          'bg-neutral-50 text-gray-950 dark:bg-neutral-800 dark:text-gray-100',
         )}
       >
         <Providers>{children}</Providers>

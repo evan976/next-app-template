@@ -35,7 +35,7 @@ export function LocaleSwitcher() {
     >
       <p className="sr-only">Change language</p>
       <select
-        className="flex-1 outline-none bg-transparent"
+        className="flex-1 bg-transparent outline-none"
         defaultValue={locale}
         disabled={isPending}
         onChange={onSelectChange}
