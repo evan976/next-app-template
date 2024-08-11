@@ -2,16 +2,23 @@ import { availableLocaleCodes } from '@/config/locale'
 import { getRequestConfig } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
-export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!availableLocaleCodes.includes(locale)) notFound()
-
-  return {
-    messages: (
-      await (locale === 'en'
-        ? // When using Turbopack, this will enable HMR for `en`
-          import('./i18n/locales/en.json')
-        : import(`./i18n/locales/${locale}.json`))
-    ).default,
+async function loadLocaleDictionary(locale: string) {
+  if (locale === 'en') {
+    // This enables HMR on the English Locale, so that instant refresh
+    // happens while we add/change texts on the source locale
+    return import('./i18n/locales/en.json').then((f) => f.default)
   }
-})
+
+  if (availableLocaleCodes.includes(locale)) {
+    // Other languages don't really require HMR as they will never be development languages
+    // so we can load them dynamically
+    return import(`./i18n/locales/${locale}.json`).then((f) => f.default)
+  }
+
+  notFound()
+}
+
+export default getRequestConfig(async ({ locale }) => ({
+  messages: await loadLocaleDictionary(locale),
+  timeZone: 'UTC',
+}))

@@ -6,7 +6,7 @@ import * as React from 'react'
  * @param {S} initialState - The initial state object. Defaults to an empty object.
  * @return {[S, (patch: Partial<S> | ((prevState: S) => Partial<S>)) => void]} - An array containing the current state object and a function to update it.
  */
-export function useSetState<S extends object>(
+function useSetState<S extends object>(
   initialState: S = {} as S,
 ): [S, (patch: Partial<S> | ((prevState: S) => Partial<S>)) => void] {
   const [state, set] = React.useState<S>(initialState)
@@ -25,3 +25,5 @@ export function useSetState<S extends object>(
 
   return [state, setState]
 }
+
+export default useSetState

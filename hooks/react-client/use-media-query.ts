@@ -8,7 +8,7 @@ import * as React from 'react'
  * @return {boolean} A boolean indicating whether the current window matches the
  * provided media query.
  */
-export function useMediaQuery(query: string): boolean {
+function useMediaQuery(query: string): boolean {
   const subscribe = React.useCallback(
     (callback: () => void) => {
       const matchMedia = window.matchMedia(query)
@@ -31,3 +31,5 @@ export function useMediaQuery(query: string): boolean {
 
   return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
+
+export default useMediaQuery

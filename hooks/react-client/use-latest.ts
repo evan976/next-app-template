@@ -6,8 +6,10 @@ import * as React from 'react'
  * @param {T} value - The value to be stored in the ref object.
  * @return {React.MutableRefObject<T>} A ref object that holds the latest value.
  */
-export function useLatest<T>(value: T): React.MutableRefObject<T> {
+function useLatest<T>(value: T): React.MutableRefObject<T> {
   const ref = React.useRef(value)
   ref.current = value
   return ref
 }
+
+export default useLatest

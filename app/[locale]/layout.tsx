@@ -1,16 +1,13 @@
-import { Providers } from '@/app/providers'
 import {
   availableLocaleCodes,
   availableLocalesMap,
   defaultLocale,
 } from '@/config/locale'
 import { inter } from '@/lib/fonts'
+import { cn } from '@/lib/utils'
+import { Providers } from '@/providers'
 import type { Metadata } from 'next'
-import {
-  getMessages,
-  getTranslations,
-  unstable_setRequestLocale,
-} from 'next-intl/server'
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations()
@@ -36,14 +33,17 @@ export default async function AppLayout({
   // Enable static rendering
   unstable_setRequestLocale(locale)
 
-  const messages = await getMessages()
-
   const { hrefLang, langDir } = availableLocalesMap[locale] || defaultLocale
 
   return (
     <html lang={hrefLang} dir={langDir} suppressHydrationWarning>
-      <body className={inter.className}>
-        <Providers messages={messages}>{children}</Providers>
+      <body
+        className={cn(
+          inter.className,
+          'bg-neutral-50 dark:bg-neutral-800 text-gray-950 dark:text-gray-100',
+        )}
+      >
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
