@@ -18,11 +18,26 @@ export function LocaleSwitcher() {
     const nextLocale = event.target.value
     startTransition(() => {
       router.replace(
+        /**
+         * When using shared pathnames navigation(createSharedPathnamesNavigation),
+         * pathnames are the same for each locale, therefore there's no need to resolve a localized template.
+         * @see https://github.com/amannn/next-intl/issues/1240
+         * ```
+         * const router = useRouter()
+         * const pathname = usePathname()
+         *
+         * // ❌ Doesn't work
+         * router.push({ pathname }, { locale: 'de' })
+         *
+         * // ✅ Works
+         * router.push(pathname, { locale: 'de' })
+         * ```
+         */
+        pathname,
         // @ts-expect-error -- TypeScript will validate that only known `params`
         // are used in combination with a given `pathname`. Since the two will
         // always match for the current route, we can skip runtime checks.
-        { pathname, params },
-        { locale: nextLocale },
+        { params, locale: nextLocale },
       )
     })
   }

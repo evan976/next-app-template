@@ -15,5 +15,6 @@ export const availableLocalesMap = Object.fromEntries(
 
 export const pathnames: Pathnames<typeof availableLocaleCodes> = {}
 
-export const localePrefix: LocalePrefix<typeof availableLocaleCodes> =
-  'as-needed'
+export const localePrefix: LocalePrefix<typeof availableLocaleCodes> = {
+  mode: 'as-needed',
+}
